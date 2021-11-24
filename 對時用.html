@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script>
+			function startTime(){
+				const time = new Date() - 1637770800840;
+				const h = parseInt(time/3600000);
+				const m = parseInt(time%3600000/60000);
+				const s = parseInt(time%60000/1000);
+				document.querySelector('#clock').innerHTML = `${checkTime(h)}:${checkTime(m)}:${checkTime(s)}`;
+				document.querySelector('#url').href = `https://www.youtube.com/watch?v=bJnxSCTZZs8&t=${h}h${m}m${s}s`;
+			}
+
+			function checkTime(t) {
+				return t >= 10 ? t : `0${t}`;
+			}
+			
+			function start() {
+				setInterval(startTime, 100);
+			}
+		</script>
+	</head>
+	<body onload="start()">
+    <div id="clock"></div>
+	<a id="url">影片網址（含 Timecode ）</a>
+	</body>
+</html>
